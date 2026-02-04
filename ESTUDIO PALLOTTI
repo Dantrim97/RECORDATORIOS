@@ -71,10 +71,8 @@
 
   <label>Mensaje</label>
   <textarea id="mensaje" rows="5" placeholder="Escribí acá el mensaje completo que querés enviar por WhatsApp..."></textarea>
-
   <button onclick="programar()">Programar</button>
 </div>
-
 <script>
 function autocompletar() {
   let v = document.getElementById("cliente").value;
@@ -89,7 +87,6 @@ function programar() {
     alert("⚠️ Completá la fecha y el mensaje");
     return;
   }
-
   alert(
     "✅ Recordatorio creado (demo)\n\n" +
     "Fecha: " + fecha + "\n\n" +
