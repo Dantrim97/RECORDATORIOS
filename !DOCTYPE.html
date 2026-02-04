@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Recordatorios WhatsApp</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      display: flex;
+      justify-content: center;
+      padding-top: 40px;
+    }
+    .card {
+      background: white;
+      width: 420px;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      margin-top: 0;
+      text-align: center;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 15px;
+    }
+    select, input, textarea, button {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      font-size: 14px;
+    }
+    textarea {
+      resize: vertical;
+    }
+    button {
+      margin-top: 20px;
+      background: #25D366;
+      border: none;
+      color: white;
+      font-size: 16px;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #1ebc5a;
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <h2>📲 Enviar recordatorio</h2>
+
+  <label>Cliente</label>
+  <select id="cliente" onchange="autocompletar()">
+    <option value="">Seleccionar cliente</option>
+    <option value="+5491112345678|Juan Pérez">Juan Pérez</option>
+    <option value="+5491123456789|María Gómez">María Gómez</option>
+  </select>
+
+  <label>Teléfono</label>
+  <input type="text" id="telefono" readonly>
+
+  <label>Fecha de envío (DD/MM/AAAA)</label>
+  <input type="text" id="fecha" placeholder="20/10/2026">
+
+  <label>Mensaje</label>
+  <textarea id="mensaje" rows="4">
+Hola 👋  
+Te recuerdo que vence tu exención de Ganancias el {{FECHA}}.
+  </textarea>
+
+  <button onclick="programar()">Programar</button>
+</div>
+
+<script>
+function autocompletar() {
+  let v = document.getElementById("cliente").value;
+  if (v) document.getElementById("telefono").value = v.split("|")[0];
+}
+
+function programar() {
+  let fecha = document.getElementById("fecha").value;
+  let mensaje = document.getElementById("mensaje").value.replace("{{FECHA}}", fecha);
+  alert("Mensaje programado (demo):\n\n" + mensaje);
+}
+</script>
+
+</body>
+</html>
